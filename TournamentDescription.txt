@@ -1,0 +1,16 @@
+
+Group Stage Creation and Logic
+The Squads are first randomly swapped in the array, each squad will have a new index assigned to it. The group stage is its own class requiring 4 squads to initialize, using a for loop this can be stored in a groups array. The group stage has a main public function called ‘playTournament’ this uses a double for loop to ensure all teams in the group stage play each other. Tracking each teams win, and loss is managed by an array initialized in the constructor.
+
+
+Match Playing Mechanics
+Play Match takes 2 arguments to create a match object, both being squads. Each squad then picks their team inside the play match function. The winner is decided mainly by the average score of each team, the better team on average has a higher base in the scaledScore. I have included some randomness as football teams can be underdogs and win, this is applied to the scaledScore and a random goal could be added at the end. Each score is lower bounded to zero and rounded to a nearest whole number.
+
+Player Fitness and Dynamic Rotation
+In the PlayMatch class specifically the ‘playMatch’ player fitness is updated. Playing lowers, a players fitness score making them less likely to be picked next game, this should allow for a good rotation of players. The drop-off is minimal as the log function is reduced by a base of 100.
+
+Sorting Results and Tournament Progression
+Once the group stage is completed the results are order from winner to looser by points and in the event of tie goal difference. This is done by a bubble sort and if statement that contains a swap from the group class. 
+
+Knockout Stage Mechanics
+Knockouts use the PlayMatch class like the group stages, each team must win so the ‘getwinner’ function ensures that in the event of a draw it goes to penalties and the winner is decided by a random Boolean value. Each stage of the knockout the group size halves until one team remains. 
